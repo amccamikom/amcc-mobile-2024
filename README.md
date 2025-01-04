@@ -1,7 +1,7 @@
 # AMCC Mobile Programming 2024/2025
 
 <p align="center">
-  <img src="https://media1.tenor.com/m/k0D7Goir718AAAAC/holo-spice-and-wolf.gif">
+  <img src="https://media1.tenor.com/m/SxJQcg2-UGkAAAAd/working-from.gif" width="100%">
 </p>
 
 Selamat datang di repository resmi **Divisi Mobile Programming** oleh **AMCC 2024/2025**! Di sini kamu akan menemukan sumber belajar yang lengkap dan menarik untuk pengembangan aplikasi mobile yang dapat membantu kamu belajar.
@@ -10,9 +10,15 @@ Selamat datang di repository resmi **Divisi Mobile Programming** oleh **AMCC 202
 
 ## 📚 Tentang Mobile Programming
 
+<p align="center">
+  <img src="https://media1.tenor.com/m/W_J0-YgL_9AAAAAd/anime-making-food.gif" width="50%">
+</p>
+
 **Mobile programming** adalah seni menciptakan aplikasi yang dapat berjalan di perangkat seperti **smartphone** dan **tablet**. Ibarat membuat "kue aplikasi" untuk ponsel, kamu memerlukan resep (desain dan logika), bahan (kode dan elemen UI), serta alat yang tepat untuk menghasilkan aplikasi yang enak dipakai, mudah digunakan, dan sesuai dengan kebutuhan pengguna.
 
 Di AMCC 2024/2025, mobile programming menjadi salah satu fokus pengembangan keahlian dengan **Flutter** sebagai **"alat tempur"** utama. Flutter, framework buatan Google, memungkinkan pengembangan **aplikasi lintas platform dengan satu basis kode**, memberikan efisiensi dan kemudahan dalam membuat aplikasi yang konsisten di Android maupun iOS.
+
+
 
 ## 📚  Hal yang Akan Dipelajari
 
