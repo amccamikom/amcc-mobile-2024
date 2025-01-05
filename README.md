@@ -1,7 +1,7 @@
 # AMCC Mobile Programming 2024/2025
 
 <p align="center">
-  <img src="https://media1.tenor.com/m/SxJQcg2-UGkAAAAd/working-from.gif" width="100%">
+  <img src="https://media1.tenor.com/m/SxJQcg2-UGkAAAAd/working-from.gif" width="80%">
 </p>
 
 Selamat datang di repository resmi **Divisi Mobile Programming** oleh **AMCC 2024/2025**! Di sini kamu akan menemukan sumber belajar yang lengkap dan menarik untuk pengembangan aplikasi mobile yang dapat membantu kamu belajar.
@@ -10,9 +10,6 @@ Selamat datang di repository resmi **Divisi Mobile Programming** oleh **AMCC 202
 
 ## 📚 Tentang Mobile Programming
 
-<p align="center">
-  <img src="https://media1.tenor.com/m/W_J0-YgL_9AAAAAd/anime-making-food.gif" width="50%">
-</p>
 
 **Mobile programming** adalah seni menciptakan aplikasi yang dapat berjalan di perangkat seperti **smartphone** dan **tablet**. Ibarat membuat "kue aplikasi" untuk ponsel, kamu memerlukan resep (desain dan logika), bahan (kode dan elemen UI), serta alat yang tepat untuk menghasilkan aplikasi yang enak dipakai, mudah digunakan, dan sesuai dengan kebutuhan pengguna.
 
@@ -31,7 +28,7 @@ Setiap pertemuan menggunakan branch tersendiri agar mudah diakses. Berikut langk
 ### Langkah-langkah
 1. **Pilih Branch**: Pergi ke tab "Branch" di atas daftar file.
 2. **Pilih Pertemuan**: Pilih branch yang sesuai dengan pertemuan yang ingin diakses.
-3. **Dapatkan Materi**: Setelah beralih ke branch yang benar, Anda dapat melihat dan mengunduh materi pembelajaran untuk pertemuan tersebut.
+3. **Dapatkan Materi**: Setelah beralih ke branch yang benar, kamu bisa melihat dan download source code dari materi pembelajaran untuk pertemuan tersebut.
 
 
 ### Contoh Branch:
@@ -56,11 +53,6 @@ Ini dia instruktur keren yang siap membantu teman-teman dalam pelatihan nantinya
 
 ---
 
-## 🤝 Penutup
+## 🚀 Penutup
 Semoga dengan repositori ini bisa mempermudah pembelajaran divisi **Mobile Programming AMCC 2024/2025**. **Tetap semangat** dan juga **Learning by Doing, Learning by Teaching!**
 
----
-
-**Selamat belajar!**
-
-Dibuat dengan ❤️ oleh **MOBILE PROGRAMMING AMCC 2024/2025**
