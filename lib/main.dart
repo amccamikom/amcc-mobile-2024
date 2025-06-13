@@ -1,5 +1,6 @@
 import 'package:finli_app/pages/home_page.dart';
 import 'package:finli_app/pages/login_page.dart';
+import 'package:finli_app/pages/main_page.dart';
 import 'package:finli_app/pages/onboarding_page.dart';
 import 'package:finli_app/pages/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => MainPage(),
         '/onboarding': (context) => OnboardingPage(),
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),

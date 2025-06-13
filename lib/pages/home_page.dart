@@ -1,158 +1,397 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:finli_app/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  final balance = "Rp. 1.000.000";
-  final income = "Rp. 500.000";
-  final expense = "Rp. 300.000";
+  final balance = "Rp1.000.000";
+  final income = "Rp500.000";
+  final expense = "Rp300.000";
 
+  // DATA DUMMY
   final transactions = const [
-    {"title": "Gaji", "subtitle": "Pekerjaan", "amount": "2.000.000", "isIncome": true},
-    {"title": "Belanja", "subtitle": "Mall", "amount": "500.000", "isIncome": false},
+    {
+      "title": "Gaji",
+      "subtitle": "Pekerjaan",
+      "amount": "2.000.000",
+      "isIncome": true,
+    },
+    {
+      "title": "Belanja",
+      "subtitle": "Mall",
+      "amount": "500.000",
+      "isIncome": false,
+    },
+    {
+      "title": "Mr.B",
+      "subtitle": "Makanan",
+      "amount": "18.000",
+      "isIncome": false,
+    },
   ];
 
   final tips = const [
-    {"title": "Cara mengatur keuangan", "image": "assets/gambar_carousel.png"},
-    {"title": "Tips menabung cerdas", "image": "assets/gambar_carousel.png"},
+    {
+      "title":
+          "Introduction to Mobile Programming: Dunia Aplikasi di Genggamanmu",
+      "image": "assets/img_carousel1.png",
+    },
+    {
+      "title":
+          "Introduction Git & Github: Sahabat Developer untuk Kolaborasi dan Versi Kode",
+      "image": "assets/img_carousel2.png",
+    },
   ];
+
+  // END DATA DUMMY
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final padding = size.width * 0.04;
-    final cardHeight = size.height * 0.22;
-    final carouselHeight = size.height * 0.23;
 
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
-        title: Row(
-          children: const [
-            Text("Halo, ", style: TextStyle(fontSize: 22, color: Colors.black)),
-            Text("Riyan", style: TextStyle(fontSize: 22, color: Colors.blue)),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: CircleAvatar(backgroundImage: AssetImage('assets/profile.png')),
-          ),
-        ],
-      ),
-      body: ListView(
-        padding: EdgeInsets.all(padding),
-        children: [
-          // Balance Card
-          Container(
-            height: cardHeight,
-            padding: EdgeInsets.all(size.width * 0.05),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(20),
+
+      body: SafeArea(
+        child: ListView(
+          children: [
+            const SizedBox(height: 20),
+            // APP BAR SECTION
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "Halo, ",
+                        style: GoogleFonts.plusJakartaSans(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Text(
+                        "Riyan",
+                        style: GoogleFonts.plusJakartaSans(
+                          color: AppColors.blue,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  CircleAvatar(
+                    backgroundImage: AssetImage('assets/profile.png'),
+                  ),
+                ],
+              ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Riyan", style: TextStyle(color: Colors.white, fontSize: 18)),
-                const SizedBox(height: 10),
-                const Text("Total Balance:", style: TextStyle(color: Colors.white, fontSize: 18)),
-                Text(balance, style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-                const SizedBox(height: 10),
-                Row(
-                  children: const [
-                    Icon(Icons.arrow_downward, color: Colors.white, size: 20),
-                    SizedBox(width: 5),
-                    Text("Income", style: TextStyle(color: Colors.white)),
-                    Spacer(),
-                    Icon(Icons.arrow_upward, color: Colors.white, size: 20),
-                    SizedBox(width: 5),
-                    Text("Expense", style: TextStyle(color: Colors.white)),
-                  ],
+
+            // END OF APP BAR SECTION
+            const SizedBox(height: 20),
+
+            // BALANCE CARD SECTION
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: AppColors.blue,
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                const SizedBox(height: 4),
-                Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(income, style: const TextStyle(color: Colors.white)),
-                    const Spacer(),
-                    Text(expense, style: const TextStyle(color: Colors.white)),
+                    Row(
+                      children: [
+                        Text(
+                          "Total Balance",
+                          style: GoogleFonts.plusJakartaSans(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(width: 2),
+                        Icon(
+                          Icons.keyboard_arrow_up_outlined,
+                          size: 18,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      balance,
+                      style: GoogleFonts.plusJakartaSans(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 45),
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: AppColors.blueBackground,
+                          radius: 12,
+                          child: Icon(
+                            Icons.arrow_downward,
+                            color: AppColors.white,
+                            size: 12,
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          "Income",
+                          style: GoogleFonts.plusJakartaSans(
+                            color: AppColors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Spacer(),
+                        CircleAvatar(
+                          backgroundColor: AppColors.blueBackground,
+                          radius: 12,
+                          child: Icon(
+                            Icons.arrow_upward,
+                            color: AppColors.white,
+                            size: 12,
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          "Expense",
+                          style: GoogleFonts.plusJakartaSans(
+                            color: AppColors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        Text(
+                          income,
+                          style: GoogleFonts.plusJakartaSans(
+                            color: AppColors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          expense,
+                          style: GoogleFonts.plusJakartaSans(
+                            color: AppColors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-              ],
+              ),
             ),
-          ),
-          SizedBox(height: size.height * 0.025),
 
-          // Transaction List
-          const Text("Latest Transactions", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 10),
-          ...transactions.map((tx) {
-            return ListTile(
-              leading: CircleAvatar(
-                backgroundColor: (tx['isIncome'] as bool) ? Colors.blue[100] : Colors.red[100],
-                child: Icon(
-                  (tx['isIncome'] as bool) ? Icons.arrow_downward : Icons.arrow_upward,
-                  color: (tx['isIncome'] as bool) ? Colors.blue : Colors.red,
-                ),
-              ),
-              title: Text(tx['title'] as String),
-              subtitle: Text(tx['subtitle'] as String),
-              trailing: Text(
-                "${(tx['isIncome'] as bool) ? '+' : '-'}Rp ${(tx['amount'] as String)}",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: (tx['isIncome'] as bool) ? Colors.green : Colors.red,
-                ),
-              ),
-            );
-          }),
+            // END BALANCE CARD SECTION
+            SizedBox(height: size.height * 0.025),
 
-          SizedBox(height: size.height * 0.03),
-
-          // Tips Carousel
-          SizedBox(
-            height: carouselHeight,
-            child: PageView.builder(
-              itemCount: tips.length,
-              controller: PageController(viewportFraction: 0.8),
-              itemBuilder: (context, index) {
-                final tip = tips[index];
-                return Container(
-                  margin: EdgeInsets.only(right: size.width * 0.04),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    image: DecorationImage(
-                      image: AssetImage(tip['image']!),
-                      fit: BoxFit.cover,
+            // LATEST TRANSACTIONS SECTION
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Latest Transactions",
+                    style: GoogleFonts.plusJakartaSans(
+                      color: AppColors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      color: Colors.black45,
-                      child: Text(
-                        tip['title']!,
-                        style: const TextStyle(color: Colors.white),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "View All",
+                      style: GoogleFonts.plusJakartaSans(
+                        color: AppColors.blue,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
-                );
-              },
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.credit_card_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
-        ],
+            const SizedBox(height: 10),
+            ...transactions.map((tx) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Card(
+                  color: AppColors.white,
+                  elevation: 0,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor:
+                          (tx['isIncome'] as bool)
+                              ? Colors.blue[100]
+                              : Colors.red[100],
+                      child: Icon(
+                        (tx['isIncome'] as bool)
+                            ? Icons.arrow_downward
+                            : Icons.arrow_upward,
+                        color:
+                            (tx['isIncome'] as bool) ? Colors.blue : Colors.red,
+                      ),
+                    ),
+                    title: Text(
+                      tx['title'] as String,
+                      style: GoogleFonts.plusJakartaSans(
+                        color: AppColors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    subtitle: Text(
+                      tx['subtitle'] as String,
+                      style: GoogleFonts.plusJakartaSans(
+                        color: AppColors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w200,
+                      ),
+                    ),
+                    trailing: Text(
+                      "${(tx['isIncome'] as bool) ? '+' : '-'}Rp ${(tx['amount'] as String)}",
+                      style: GoogleFonts.plusJakartaSans(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color:
+                            (tx['isIncome'] as bool)
+                                ? Colors.green
+                                : Colors.red,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }),
+
+            // END OF LATEST TRANSACTIONS SECTION
+            SizedBox(height: size.height * 0.03),
+
+            // ACADEMY SECTION
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Academy This Week",
+                    style: GoogleFonts.plusJakartaSans(
+                      color: AppColors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "View All",
+                      style: GoogleFonts.plusJakartaSans(
+                        color: AppColors.blue,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: CarouselSlider.builder(
+                itemCount: tips.length,
+                itemBuilder: (context, index, realIndex) {
+                  final tip = tips[index];
+                  return GestureDetector(
+                    onTap: () {
+                      print("Kartu di-tap: ${tip['title']}");
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: Column(
+                        children: [
+                          Flexible(
+                            flex: 2,
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(8),
+                                  topRight: Radius.circular(8),
+                                ),
+                                image: DecorationImage(
+                                  image: AssetImage(tip['image']!),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            flex: 1,
+                            child: Container(
+                              width: double.infinity,
+                              decoration: const BoxDecoration(
+                                color: AppColors.white,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 10,
+                                ),
+                                child: Text(
+                                  tip['title']!,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.plusJakartaSans(
+                                    fontSize: 12,
+                                    color: AppColors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                options: CarouselOptions(
+                  padEnds: false,
+                  height: 180,
+                  viewportFraction: 0.7,
+                  enableInfiniteScroll: false,
+                  enlargeCenterPage: false,
+                  autoPlay: false,
+                ),
+              ),
+            ),
+
+            SizedBox(height: size.height * 0.03),
+          ],
+
+          // END OF LATEST TRANSACTIONS SECTION
+        ),
       ),
     );
   }
