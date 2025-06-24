@@ -225,7 +225,9 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/transaction');
+                    },
                     child: Text(
                       "View All",
                       style: GoogleFonts.plusJakartaSans(

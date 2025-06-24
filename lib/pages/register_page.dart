@@ -6,17 +6,18 @@ import 'package:finli_app/bloc/auth/auth_bloc.dart'; // Mengimpor AuthBloc untuk
 import 'package:finli_app/bloc/auth/auth_event.dart'; // Mengimpor event untuk AuthBloc.
 import 'package:finli_app/bloc/auth/auth_state.dart';
 
-class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _emailcontroller = TextEditingController();
 
   final TextEditingController _passwordcontroller = TextEditingController();
+  final TextEditingController _confirmationPasswordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
             Image.asset('assets/img_login.png', height: 183),
             SizedBox(height: 43),
             Text(
-              'Selamat Datang Kembali',
+              'Selamat Datang',
               textAlign: TextAlign.center,
               style: GoogleFonts.plusJakartaSans(
                 fontSize: 28,
@@ -54,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Text(
-              'Silahkan login untuk melanjutkan',
+              'Silahkan Register untuk melanjutkan',
 
               textAlign: TextAlign.center,
               style: GoogleFonts.plusJakartaSans(
@@ -98,20 +99,38 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 12),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: TextField(
+                controller: _confirmationPasswordcontroller,
+                obscureText: true,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.lock, color: Colors.grey),
+                  hintText: 'Konfirmasi Password',
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+            SizedBox(height: 12),
 
             BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {
-                if (state is LoginAuthenticated) {
-                  // Jika login berhasil, tampilkan pesan dan navigasi ke halaman home.
+                if (state is RegisterAuthenticated) {
+                  // Jika Register berhasil, tampilkan pesan dan navigasi ke halaman home.
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Login successful!')),
+                    const SnackBar(content: Text('Register successful!')),
                   );
                   Navigator.pushNamed(
                     context,
                     '/main',
                   ); // Navigasi ke halaman home.
                 } else if (state is AuthError) {
-                  // Jika login gagal, tampilkan pesan error.
+                  // Jika Register gagal, tampilkan pesan error.
                   ScaffoldMessenger.of(
                     context,
                   ).showSnackBar(SnackBar(content: Text(state.message)));
@@ -132,23 +151,31 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  // Tampilkan teks "Login" jika tidak sedang loading.
+                  // Tampilkan teks "Register" jika tidak sedang loading.
                   onPressed:
                       state is AuthLoading
                           ? null // Nonaktifkan tombol jika sedang loading.
                           : () {
                             if (_emailcontroller.text.isEmpty ||
-                                _passwordcontroller.text.isEmpty) {
+                                _passwordcontroller.text.isEmpty ||
+                                _confirmationPasswordcontroller.text.isEmpty) {
                               // Validasi input kosong.
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Please fill in all fields'),
                                 ),
                               );
+                            } else if ( _passwordcontroller.text != _confirmationPasswordcontroller.text) {
+                              // Validasi jika password dan konfirmasi password tidak cocok.
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Password and confirmation do not match'),
+                                ),
+                              );
                             } else {
-                              // Memicu event login dengan email dan password.
+                              // Memicu event Register dengan email dan password.
                               context.read<AuthBloc>().add(
-                                LoginRequested(
+                                RegisterRequested(
                                   _emailcontroller.text.trim(),
                                   _passwordcontroller.text.trim(),
                                 ),
@@ -163,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                                     .white, // Tampilkan indikator loading di tombol.
                           )
                           : Text(
-                            "Login",
+                            "Register",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -176,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Belum punya akun?"),
+                Text("Sudah punya akun?"),
                 TextButton(
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
@@ -184,10 +211,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/register');
+                    Navigator.pushNamed(context, '/login');
                   },
                   child: Text(
-                    "Daftar Sekarang!",
+                    "Login Sekarang!",
                     style: TextStyle(
                       color: AppColors.blue,
                       fontWeight: FontWeight.bold,
